@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup_activity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/jp">
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            style="@style/bold_20_text"
+            android:layout_marginTop="@dimen/_5ssp"
+            android:layout_gravity="center" />-->
+
+        <EditText
+            android:id="@+id/signup_name"
+            style="@style/bold_20_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25ssp"
+            android:background="@drawable/custom_border"
+            android:hint="@string/name"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/_7ssp"
+            android:paddingStart="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/signup_email"
+        style="@style/bold_20_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15ssp"
+        android:background="@drawable/custom_border"
+        android:drawableRight="@drawable/ic_email"
+        android:hint="@string/Email_id"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/_7ssp"
+        android:paddingStart="@dimen/_12ssp"
+        android:textStyle="bold"
+        tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/signup_password"
+        style="@style/bold_20_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15ssp"
+        android:background="@drawable/custom_border"
+        android:drawableRight="@drawable/ic_password"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="@dimen/_7ssp"
+        android:paddingStart="@dimen/_12ssp"
+        android:textStyle="bold"
+        tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/signup_confirm_password"
+            style="@style/bold_20_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15ssp"
+            android:background="@drawable/custom_border"
+            android:drawableRight="@drawable/ic_password"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:padding="@dimen/_7ssp"
+            android:paddingStart="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/signup_mobile_number"
+            style="@style/bold_20_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15ssp"
+            android:background="@drawable/custom_border"
+            android:hint="@string/Mobile_number"
+            android:inputType="number"
+            android:padding="@dimen/_7ssp"
+            android:paddingStart="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/signup_Date_of_birth"
+            style="@style/bold_20_edit"
+            android:editable="false"
+            android:drawableRight="@drawable/celender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15ssp"
+            android:background="@drawable/custom_border"
+            android:hint="@string/date_of_birth"
+            android:padding="@dimen/_7ssp"
+            android:paddingStart="@dimen/_12ssp"
+            android:textStyle="bold"
+            tools:ignore="InvalidId,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/signup_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5ssp"
+            android:text="@string/Gender"
+            android:paddingStart="@dimen/_10ssp"
+            style="@style/bold_20_text"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+       <RadioGroup
+           android:id="@+id/signup_radiogroup"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           >
+        <RadioButton
+            android:id="@+id/signup_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/bold_20_radio_button"
+            android:text="@string/Male"/>
+
+         <RadioButton
+             android:id="@+id/signup_female"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/Female"
+             style="@style/bold_20_radio_button"
+             android:layout_marginStart="@dimen/_20ssp"/>
+
+           <RadioButton
+               android:id="@+id/signup_Other"
+               style="@style/bold_20_radio_button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/_20ssp"
+               android:text="@string/Other" />
+
+       </RadioGroup>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/bold_20_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_10ssp"
+            android:text="City :"/>
+
+            <Spinner
+                android:id="@+id/spinner"
+                style="@style/bold_20_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_25ssp"
+                android:layout_marginLeft="@dimen/_70ssp"
+                android:layout_marginTop="@dimen/_12ssp"
+                android:layout_marginRight="@dimen/_10ssp"
+                android:contextClickable="true"
+                android:paddingTop="@dimen/_5ssp"
+                android:paddingBottom="@dimen/_5ssp"
+                android:popupBackground="@color/sky_blue"
+                android:textAlignment="center"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+            <Button
+                android:id="@+id/signup_Signup"
+                style="@style/bold_20_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30ssp"
+                android:layout_marginTop="@dimen/_85ssp"
+                android:paddingStart="@dimen/_20ssp"
+                android:paddingEnd="@dimen/_20ssp"
+                android:text="@string/signup_signup"
+
+
+                />
+            <Button
+                android:id="@+id/signup_login"
+                style="@style/bold_20_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_85ssp"
+                android:paddingStart="@dimen/_25ssp"
+                android:paddingEnd="@dimen/_25ssp"
+                android:text="@string/login"
+                android:layout_marginStart="220dp"
+
+                />
+
+         </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
