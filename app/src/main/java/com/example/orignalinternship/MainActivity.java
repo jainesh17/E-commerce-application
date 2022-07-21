@@ -1,9 +1,7 @@
 package com.example.orignalinternship;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,10 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.snackbar.SnackbarContentLayout;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     SharedPreferences sp;
     TextView create_account;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (email.getText().toString().trim().equals("")) {
                     email.setError("invalid user id");
-                } else if (password.getText().toString().trim().equals("")) {
+
+                }
+                else if (!email.getText().toString().matches(emailPattern)){
+                    email.setError("please valid email id");
+                }
+                else if (password.getText().toString().trim().equals("")) {
                     password.setError("invalid password");
 
                 } else {
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         finishAffinity();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class dologin extends AsyncTask<String,String,String> {
         ProgressDialog pd;
 

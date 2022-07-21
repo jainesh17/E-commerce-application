@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class productllistadepter  extends RecyclerView.Adapter<productllistadepter.Myholder> {
@@ -34,11 +36,24 @@ public class productllistadepter  extends RecyclerView.Adapter<productllistadept
     }
 
 
+    public class Myholder extends RecyclerView.ViewHolder {
+
+        ImageView imageView;
+        TextView name,price;
+
+        public Myholder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.custom_product_list_image);
+            name = itemView.findViewById(R.id.custom_product_list_name);
+            price = itemView.findViewById(R.id.custom_product_list_price);
+        }
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull productllistadepter.Myholder holder, @SuppressLint("RecyclerView") int position) {
-        holder.imageView.setImageResource(arrayList.get(position).getImage());
+    //    holder.imageView.setImageResource(arrayList.get(position).getImage());
+        Picasso.get().load(arrayList.get(position).getImage()).placeholder(R.drawable.loading_new).into(holder.imageView);
         holder.name.setText(arrayList.get(position).getName());
         holder.price.setText(context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice()+"/" + arrayList.get(position).getItem());
 
@@ -51,7 +66,7 @@ public class productllistadepter  extends RecyclerView.Adapter<productllistadept
                 bundle.putString("name",arrayList.get(position).getName());
                 bundle.putString("price",context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice()+"/" + arrayList.get(position).getItem());
                 bundle.putString("desc",arrayList.get(position).getDescription());
-                bundle.putInt("image",arrayList.get(position).getImage());
+                bundle.putString("image",arrayList.get(position).getImage());
                 intent.putExtras(bundle);
 
                 context.startActivity(intent);
@@ -65,17 +80,5 @@ public class productllistadepter  extends RecyclerView.Adapter<productllistadept
         return arrayList.size();
     }
 
-    public static class Myholder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView name,price;
-
-        public Myholder(@NonNull View itemView) {
-
-            super(itemView);
-            imageView = itemView.findViewById(R.id.custom_product_list_image);
-            name = itemView.findViewById(R.id.custom_product_list_name);
-            price = itemView.findViewById(R.id.custom_product_list_price);
-        }
-    }
 }

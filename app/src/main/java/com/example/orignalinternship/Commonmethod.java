@@ -11,12 +11,12 @@ public class Commonmethod {
 
     Commonmethod(Context context, String message){
       //  Toast.makeText(context, "login", Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
     Commonmethod(View view, String message){
       //  Snackbar.make(view, "login successfully", Snackbar.LENGTH_SHORT).show();
-        Snackbar.make(view, message ,Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(view, message ,Snackbar.LENGTH_LONG).show();
     }
 
     Commonmethod(Context context , Class<?> nextclass){

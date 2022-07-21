@@ -12,10 +12,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class Productadepter extends RecyclerView.Adapter<Productadepter.Myholder> {
+class Productadepter extends RecyclerView.Adapter<Productadepter.MyHolder> {
 
     Context context;
     ArrayList<productlist> arrayList;
@@ -26,7 +27,7 @@ public class Productadepter extends RecyclerView.Adapter<Productadepter.Myholder
         this.arrayList = productarraylist;
     }
 
-    @NonNull
+   /* @NonNull
     @Override
     public Myholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_product,parent,false);
@@ -76,5 +77,54 @@ public class Productadepter extends RecyclerView.Adapter<Productadepter.Myholder
             name = itemView.findViewById(R.id.custom_product_name);
             price = itemView.findViewById(R.id.custom_product_price);
         }
+    }*/
+   @NonNull
+   @Override
+   public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_product,parent,false);
+       return new MyHolder(view);
+   }
+
+    public class MyHolder extends RecyclerView.ViewHolder {
+
+        ImageView imageView;
+        TextView name,price;
+
+        public MyHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.custom_product_image);
+            name = itemView.findViewById(R.id.custom_product_name);
+            price = itemView.findViewById(R.id.custom_product_price);
+        }
+    }
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(@NonNull MyHolder holder, @SuppressLint("RecyclerView") int position) {
+        //holder.imageView.setImageResource(arrayList.get(position).getImage());
+        Picasso.get().load(arrayList.get(position).getImage()).placeholder(R.drawable.loading_new).into(holder.imageView);
+        holder.name.setText(arrayList.get(position).getName());
+        holder.price.setText(context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice()+"/"+arrayList.get(position).getUnit());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,productdetailsActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("name",arrayList.get(position).getName());
+                bundle.putString("price",context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice()+"/"+arrayList.get(position).getUnit());
+                bundle.putString("desc",arrayList.get(position).getDescription());
+                bundle.putString("image",arrayList.get(position).getImage());
+                intent.putExtras(bundle);
+
+                context.startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
     }
 }
