@@ -61,12 +61,9 @@ public class categoryadepter extends RecyclerView.Adapter<categoryadepter.MyHold
         Picasso.get().load(arrayList.get(position).getImage()).placeholder(R.drawable.loading_new).into(holder.imageView);
         holder.name.setText(arrayList.get(position).getName());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sp.edit().putString(constantsp.CATEGORY_ID,arrayList.get(position).getId()).commit();
-                new Commonmethod(context, productActivity.class);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            sp.edit().putString(constantsp.CATEGORY_ID,arrayList.get(position).getId()).commit();
+            new Commonmethod(context, productActivity.class);
         });
     }
 

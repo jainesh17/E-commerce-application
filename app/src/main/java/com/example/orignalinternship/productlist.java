@@ -1,8 +1,9 @@
 package com.example.orignalinternship;
 
 public class productlist {
-    String name,price,item,unit,description;
-    String image;
+    private String name,price,item,unit,description;
+    private String image;
+    private String url;
 
     public String getName() {
         return name;
@@ -49,5 +50,13 @@ public class productlist {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
