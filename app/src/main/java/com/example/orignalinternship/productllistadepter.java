@@ -2,8 +2,7 @@ package com.example.orignalinternship;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -55,12 +55,12 @@ public class productllistadepter  extends RecyclerView.Adapter<productllistadept
     //    holder.imageView.setImageResource(arrayList.get(position).getImage());
         Picasso.get().load(arrayList.get(position).getImage()).placeholder(R.drawable.loading_new).into(holder.imageView);
         holder.name.setText(arrayList.get(position).getName());
-        holder.price.setText(context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice()+"/" + arrayList.get(position).getItem());
+        holder.price.setText(context.getResources().getString(R.string.price_symbol)+arrayList.get(position).getPrice());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,productdetailsActivity.class);
+                /*Intent intent = new Intent(context,productdetailsActivity.class);
 
                 Bundle bundle = new Bundle();
                 bundle.putString("name",arrayList.get(position).getName());
@@ -69,7 +69,11 @@ public class productllistadepter  extends RecyclerView.Adapter<productllistadept
                 bundle.putString("image",arrayList.get(position).getImage());
                 intent.putExtras(bundle);
 
-                context.startActivity(intent);
+                context.startActivity(intent);*/
+
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(context, Uri.parse(arrayList.get(position).getUrl()));
             }
         });
 

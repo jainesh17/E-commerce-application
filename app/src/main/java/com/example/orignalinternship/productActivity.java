@@ -112,6 +112,7 @@ public class productActivity extends AppCompatActivity {
                       //  list.setUnit(jsonObject.getString("unit"));
                         list.setDescription(jsonObject.getString("description"));
                         list.setImage(jsonObject.getString("image"));
+                        list.setUrl(jsonObject.getString("url"));
                         arrayList.add(list);
                     }
                     productllistadepter productAdapter = new productllistadepter(productActivity.this, arrayList);
